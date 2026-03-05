@@ -1,6 +1,4 @@
-"""
-Data loading and preprocessing functions for heart disease dataset.
-"""
+
 """
 Data loading and preprocessing functions for heart disease dataset.
 """
@@ -99,17 +97,17 @@ def prepare_classification_data(df, target='num'):
     """
     df = df.copy()
 
-    # If test asks for 'target' but DataFrame has 'num', rename it
+  
     if target not in df.columns and 'num' in df.columns and target == 'target':
         df = df.rename(columns={'num': 'target'})
 
     if target not in df.columns:
         raise KeyError(f"Column '{target}' not found in DataFrame")
 
-    # Create binary target
+   
     y = (df[target] > 0).astype(int)
 
-    # Drop original target and regression column if present
+    
     X = df.drop(columns=[target], errors='ignore')
     if 'chol' in X.columns:
         X = X.drop(columns=['chol'], errors='ignore')
