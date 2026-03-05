@@ -50,7 +50,7 @@ def generate_auroc_curve(y_true, y_pred_proba, model_name="Model", output_path=N
         fig.savefig(output_path, bbox_inches='tight')
         plt.close(fig)
 
-    return fig  # Only figure
+    return fig  
 
 
 def generate_auprc_curve(y_true, y_pred_proba, model_name="Model", output_path=None, ax=None):
@@ -74,7 +74,7 @@ def generate_auprc_curve(y_true, y_pred_proba, model_name="Model", output_path=N
         fig.savefig(output_path, bbox_inches='tight')
         plt.close(fig)
 
-    return fig  # Only figure
+    return fig  
 
 
 def plot_comparison_curves(y_true, y_pred_proba_log, y_pred_proba_knn, output_path=None):
