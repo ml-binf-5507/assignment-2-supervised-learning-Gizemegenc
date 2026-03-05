@@ -68,7 +68,7 @@ def preprocess_data(df):
     numeric_cols = df.select_dtypes(include=['number']).columns
     df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].median())
 
-    # One-hot encode categorical variables
+  
     categorical_cols = df.select_dtypes(include=['object']).columns
     if len(categorical_cols) > 0:
         df = pd.get_dummies(df, columns=categorical_cols, drop_first=True)
