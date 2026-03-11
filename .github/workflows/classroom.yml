@@ -1,3 +1,7 @@
+name: GitHub Classroom Workflow
+
+on: [push]
+
 permissions:
   checks: write
   pull-requests: write
