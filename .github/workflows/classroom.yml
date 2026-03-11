@@ -12,13 +12,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-      
+          python-version: "3.9"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
-      - uses: education/autograding@v1
+
+      - name: Run Tests
+        id: tests
+        uses: education/autograding-command-grader@v1
+        with:
+          test-name: "pytest tests"
+          setup-command: ""
+          command: "pytest"
+          timeout: 10
+          max-score: 10
+
+      - name: Autograding Reporter
+        uses: education/autograding-grading-reporter@v1
+        env:
+          TESTS_RESULTS: "${{steps.tests.outputs.result}}"
+        with:
+          runners: tests
